@@ -18,9 +18,20 @@ class BowlingServer < Sinatra::Base
     { time: Time.now.to_s }.to_json
   end
 
+
+  get '/game' do
+    erb :'/game/index'
+  end
+
+  post '/player-and-game-creation' do
+    new_player = Player.create(name: params[:player_name])
+    new_game = Game.create(player_id: new_player.id)
+    new_game.frame_setter
+    redirect('/game')
+  end
+
+
   get '/new-game' do
-    new_player = Player.create(name: 'Hank Hill')
-    Game.create(player_id: new_player.id)
     # Game.create(player_id: peggy.id)
     erb :'/game/new_game'
   end
