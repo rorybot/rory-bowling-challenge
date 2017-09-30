@@ -5,9 +5,10 @@ feature 'Database functionality' do
   end
 
   scenario 'I can create a new player' do
-    neo = Player.new(name: 'Peggy Hill')
-    expect(neo.save).to eq true
-    expect(Player.first.name).to eq 'Bobby Hill' # Testing Peggy is 2nd entry
+    peggy = Player.new(name: 'Peggy Hill')
+    expect(peggy.save).to eq true
+    expect(Player.last.name).to eq 'Peggy Hill' # Testing Peggy is 2nd entry
+    expect(Player.first.name).to eq 'Bobby Hill' # Testing Bobby is 1st entry
   end
 
   scenario 'A player can have a game' do
@@ -36,6 +37,6 @@ feature 'Database functionality' do
     bobby = Player.all[0]
     test_game = Game.create(player_id: bobby.id)
     10.times { Frame.create(game_id: test_game.id) }
-    expect(Frame.map(&:game_id)).to eq Array.new(3, test_game.id)
+    expect(Frame.map(&:game_id)).to eq Array.new(10, test_game.id)
   end
 end

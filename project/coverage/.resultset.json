@@ -1,6 +1,18 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/MacBook/Projects/bowling-challenge/project/spec/features/controlling_games_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
       "/Users/MacBook/Projects/bowling-challenge/project/spec/models/database_functionality_spec.rb": [
         null,
         1,
@@ -8,6 +20,7 @@
         4,
         null,
         null,
+        1,
         1,
         1,
         1,
@@ -39,16 +52,12 @@
         1,
         1,
         1,
+        11,
         1,
-        1,
-        1,
-        1,
-        4,
-        null,
         null,
         null
       ]
     },
-    "timestamp": 1506774397
+    "timestamp": 1506776716
   }
 }
