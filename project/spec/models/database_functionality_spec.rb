@@ -39,4 +39,18 @@ feature 'Database functionality' do
     10.times { Frame.create(game_id: test_game.id) }
     expect(Frame.map(&:game_id)).to eq Array.new(10, test_game.id)
   end
+
+  scenario 'Frames store roll of balls' do
+    test_game = Game.create
+    test_game.frame_setter
+    p game_frames = Frame.map{|x| x.game_id = test_game.id
+      x}
+      arr = (1..10).to_a
+      game_frames.each{|x| x.update(:roll_1 => arr.delete_at(0))}
+
+      frames_roll_array = game_frames.map(&:roll_1)
+    p Game.all
+    p Frame.all
+    expect(frames_roll_array.inject(0){|sum,x| sum + x}).to eq 55
+  end
 end

@@ -19,7 +19,7 @@ class BowlingServer < Sinatra::Base
   end
 
 
-  get '/game' do
+  get '/' do
     erb :'/game/index'
   end
 
@@ -27,7 +27,7 @@ class BowlingServer < Sinatra::Base
     new_player = Player.create(name: params[:player_name])
     new_game = Game.create(player_id: new_player.id)
     new_game.frame_setter
-    redirect('/game')
+    redirect('/')
   end
 
 
