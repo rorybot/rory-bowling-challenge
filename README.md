@@ -1,5 +1,9 @@
 
-Rory's first commit
+Approach:
+- Mapped out initial sketch of relationship between different components
+- Constructed database first, as this allowed me to figure out what data I wanted to be persisted and therefore what tables I'd need as well as their relationship. As I built this out, it allowed me to draw out better what was going to be inputted from the javascript program itself, and how it would come in via the website -- I constructed my buckets based on what I expected them to carry, which made me think more carefully about what I was going to be carrying.
+
+Tech Used:
 
 Bowling Challenge
 =================

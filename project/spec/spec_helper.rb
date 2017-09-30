@@ -6,7 +6,7 @@ require 'simplecov-console'
 require 'database_cleaner'
 require 'orderly'
 require 'timecop'
-# require_relative 'helpers/session_helpers.rb'
+require_relative 'helpers/session_helpers.rb'
 
 require File.join(File.dirname(__FILE__), '../app/', 'app.rb')
 Capybara.app = BowlingServer
@@ -18,7 +18,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
 SimpleCov.start
 
 RSpec.configure do |config|
-  # config.include SessionHelpers
+  config.include SessionHelpers
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
