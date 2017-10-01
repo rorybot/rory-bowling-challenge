@@ -8,11 +8,31 @@ describe("Game", function() {
 
 
 
-  describe("Can create a frame", function() {
-    // it("has two rolls as limit", function() {
-    //   expect(frame.getRollLimit()).toEqual(2);
-    // });
+  describe("Can interact with frame", function() {
+    it("can create new Frames", function() {
+      newFrame = game.newFrame(2)
+      expect(newFrame.getRollLimit()).toEqual(2);
+    });
 
+    it("creates frames with roll scorers based on limit", function() {
+      newFrame = game.newFrame(2)
+      newFrame.createRollScores(2)
+      expect(newFrame.getRollScores()).toEqual([0,0]) ;
+    });
+
+    it("can count 0 frames at start", function() {
+      // for (i = 0; i < 10; i++) {
+      // newFrame = game.newFrame(2) ;
+      // }
+      expect(game.getFrameCounter()).toEqual(0) ;
+    });
+
+    it("can count 10 frames", function() {
+      for (i = 0; i < 10; i++) {
+      newFrame = game.newFrame(2) ;
+      }
+      expect(game.getFrameCounter()).toEqual(10) ;
+    });
 
   });
 });
