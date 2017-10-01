@@ -9,7 +9,7 @@ function Game() {
   this.STRIKE = false;
 }
 
-Game.prototype.newFrame = function(number) {
+Game.prototype._newFrame = function(number) {
   var frame = new Frame(number);
   this.frameArray.push(frame);
 
@@ -22,10 +22,10 @@ Game.prototype.newFrame = function(number) {
 Game.prototype.newFrameRules = function(number) {
   if (this.frameCounter > 10) {
     return "Game over!";
-  } else if (this.frameCounter === 10 && this.bonusStatus() === true) {
-    return this.newFrame(this.bonusValue());
+  } else if (this.frameCounter === 10 && this._bonusStatus() === true) {
+    return this._newFrame(this._bonusValue());
   } else {
-    return this.newFrame(number);
+    return this._newFrame(number);
   }
 };
 
@@ -33,11 +33,11 @@ Game.prototype.getFrameCounter = function() {
   return this.frameCounter;
 };
 
-Game.prototype.bonusStatus = function() {
+Game.prototype._bonusStatus = function() {
   return this.SPARE || this.STRIKE;
 };
 
-Game.prototype.bonusValue = function() {
+Game.prototype._bonusValue = function() {
   if (this.SPARE === true) {
     return this.SPARE_NUMBER;
   } else {

@@ -7,33 +7,37 @@ describe("Game", function() {
 
   describe("Can interact with frame", function() {
     it("can create new Frames", function() {
-      newFrame = game.newFrame(2);
+      newFrame = game._newFrame(2);
       expect(game.frameArray).toEqual(newFrame);
     });
 
     it("creates frames with roll scorers based on limit", function() {
-      game.newFrame(2);
+      game._newFrame(2);
       aNewFrame = game.frameArray.slice(-1)[0];
       expect(aNewFrame.getRollScores()).toEqual([0, 0]);
     });
 
     it("can count 0 frames at start", function() {
-      // for (i = 0; i < 10; i++) {
-      // newFrame = game.newFrame(2) ;
-      // }
       expect(game.getFrameCounter()).toEqual(0);
     });
 
     it("can count 10 frames", function() {
       for (i = 0; i < 10; i++) {
-        newFrame = game.newFrame(2);
+        newFrame = game._newFrame(2);
       }
       expect(game.getFrameCounter()).toEqual(10);
     });
 
+    it("can create frames via the rule method", function() {
+      for (i = 0; i < 5; i++) {
+        game.newFrameRules(2);
+      }
+      expect(game.frameArray.length).toEqual(5);
+    });
+
     it("stops creating frames at 11", function() {
       for (i = 0; i < 11; i++) {
-        newFrame = game.newFrame(2);
+        newFrame = game._newFrame(2);
       }
       expect(game.newFrameRules(2)).toEqual("Game over!");
       expect(game.frameArray.length).toEqual(11);
@@ -41,36 +45,35 @@ describe("Game", function() {
 
     it("stops creating frames at 10", function() {
       for (i = 0; i < 10; i++) {
-        newFrame = game.newFrame(2);
+        newFrame = game._newFrame(2);
       }
       expect(game.frameArray.length).toEqual(10);
-      expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([0,0]);
+      expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([0, 0]);
     });
 
     it("stops creating frames at 10 unless bonus status is true [strike]", function() {
       for (i = 0; i < 10; i++) {
-        newFrame = game.newFrame(2);
+        newFrame = game._newFrame(2);
       }
       game.STRIKE = true;
       expect(game.newFrameRules(2)).toEqual(game.frameArray);
       // test above just checks that expected return value of an updated array is created
       expect(game.frameArray.length).toEqual(11);
-      expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([0,0]);
+      expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([0, 0]);
       expect(game.frameArray.slice(-1)[0].ROLL_LIMIT).toEqual(2);
     });
 
-
-        it("stops creating frames at 10 unless bonus status is true [spare]", function() {
-          for (i = 0; i < 10; i++) {
-            newFrame = game.newFrame(2);
-          }
-          game.STRIKE = false;
-          game.SPARE = true;
-          expect(game.newFrameRules(2)).toEqual(game.frameArray);
-          // test above just checks that expected return value of an updated array is created
-          expect(game.frameArray.length).toEqual(11);
-          expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([0]);
-          expect(game.frameArray.slice(-1)[0].ROLL_LIMIT).toEqual(1);
-        });
+    it("stops creating frames at 10 unless bonus status is true [spare]", function() {
+      for (i = 0; i < 10; i++) {
+        newFrame = game._newFrame(2);
+      }
+      game.STRIKE = false;
+      game.SPARE = true;
+      expect(game.newFrameRules(2)).toEqual(game.frameArray);
+      // test above just checks that expected return value of an updated array is created
+      expect(game.frameArray.length).toEqual(11);
+      expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([0]);
+      expect(game.frameArray.slice(-1)[0].ROLL_LIMIT).toEqual(1);
+    });
   });
 });
