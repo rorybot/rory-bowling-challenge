@@ -47,7 +47,7 @@ describe("Game", function() {
       expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([0,0]);
     });
 
-    it("stops creating frames at 10 unless bonus status is true", function() {
+    it("stops creating frames at 10 unless bonus status is true [strike]", function() {
       for (i = 0; i < 10; i++) {
         newFrame = game.newFrame(2);
       }
@@ -56,6 +56,21 @@ describe("Game", function() {
       // test above just checks that expected return value of an updated array is created
       expect(game.frameArray.length).toEqual(11);
       expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([0,0]);
+      expect(game.frameArray.slice(-1)[0].ROLL_LIMIT).toEqual(2);
     });
+
+
+        it("stops creating frames at 10 unless bonus status is true [spare]", function() {
+          for (i = 0; i < 10; i++) {
+            newFrame = game.newFrame(2);
+          }
+          game.STRIKE = false;
+          game.SPARE = true;
+          expect(game.newFrameRules(2)).toEqual(game.frameArray);
+          // test above just checks that expected return value of an updated array is created
+          expect(game.frameArray.length).toEqual(11);
+          expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([0]);
+          expect(game.frameArray.slice(-1)[0].ROLL_LIMIT).toEqual(1);
+        });
   });
 });
