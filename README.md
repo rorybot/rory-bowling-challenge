@@ -2,6 +2,8 @@
 Approach:
 - Mapped out initial sketch of relationship between different components
 - Constructed database first, as this allowed me to figure out what data I wanted to be persisted and therefore what tables I'd need as well as their relationship. As I built this out, it allowed me to draw out better what was going to be inputted from the javascript program itself, and how it would come in via the website -- I constructed my buckets based on what I expected them to carry, which made me think more carefully about what I was going to be carrying.
+- I then went back to the drawing board, now I had a clear idea of what the end point would look like, from a persistent-data POV. I mapped everything out with record cards and physically manipulated them, simulating the key events of the game, in order to figure out how rules would be implemented
+- This took a couple hours, but I was then able to move what I had been acting out into a model on a white board, from which I was then able to start writing tests to create all the necessary steps laid out there
 
 Tech Used:
 
