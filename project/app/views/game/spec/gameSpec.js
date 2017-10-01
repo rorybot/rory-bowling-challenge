@@ -32,11 +32,10 @@ describe("Game", function() {
     });
 
     it("stops creating frames at 10", function() {
-      for (i = 0; i < 10; i++) {
+      for (i = 0; i < 11; i++) {
         newFrame = game.newFrame(2);
       }
-
-      expect(game.newFrame(2)).toEqual("Go home - you've reached your limit!");
+      expect(game.newFrameRules(2)).toEqual("Game over!");
     });
   });
 });

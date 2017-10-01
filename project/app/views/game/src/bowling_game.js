@@ -5,11 +5,17 @@ function Game() {
 }
 
 Game.prototype.newFrame = function(number) {
-  if (this.frameCounter === 10) {
-    return "Go home - you've reached your limit!";
+  this.frameCounter += 1;
+  return new Frame(number);
+};
+
+Game.prototype.newFrameRules = function(number) {
+  if (this.frameCounter > 10) {
+    return "Game over!";
+  } else if (this.frameCounter === 10) {
+    return this.newFrame(number);
   } else {
-    this.frameCounter += 1;
-    return new Frame(2);
+    return this.newFrame(number);
   }
 };
 
