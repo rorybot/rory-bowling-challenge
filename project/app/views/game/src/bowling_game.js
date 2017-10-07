@@ -17,14 +17,18 @@ Game.prototype._newFrame = function(number) {
 };
 
 Game.prototype.newFrameRules = function(number) {
-  if (this.frameCounter > 10) {
-    return "Game over!";
+  if (this.frameCounter < 10) {
+    return this._newFrame(number)
   } else if (this.frameCounter === 10 && this._bonusStatus() === true) {
     return this._newFrame(this._bonusValue(), true);
   } else {
-    return this._newFrame(number);
+    return "Game Over"
   }
 };
+
+
+
+
 
 Game.prototype.getFrameCounter = function() {
   return this.frameCounter;

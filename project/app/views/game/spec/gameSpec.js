@@ -35,20 +35,13 @@ describe("Game", function() {
       expect(game.frameArray.length).toEqual(5);
     });
 
-    it("stops creating frames at 11", function() {
-      for (i = 0; i < 11; i++) {
-        newFrame = game._newFrame(2);
-      }
-      expect(game.newFrameRules(2)).toEqual("Game over!");
-      expect(game.frameArray.length).toEqual(11);
-    });
 
     it("stops creating frames at 10", function() {
       for (i = 0; i < 10; i++) {
         newFrame = game._newFrame(2);
       }
+      expect(game.newFrameRules(2)).toEqual('Game Over');
       expect(game.frameArray.length).toEqual(10);
-      expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([]);
     });
 
     it("stops creating frames at 10 unless bonus status is true [spare]; create frame with 1 roll", function() {

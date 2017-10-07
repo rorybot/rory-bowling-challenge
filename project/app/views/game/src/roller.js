@@ -4,6 +4,6 @@ function Roller(){
 
 
 Roller.prototype.rollBall = function (frame, rollValue) {
-  frame.ROLL_SCORES = [rollValue,0]
+  frame.ROLL_SCORES.push(rollValue)
   return rollValue
 };
