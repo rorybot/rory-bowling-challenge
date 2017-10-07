@@ -7,14 +7,14 @@ describe("Game", function() {
 
   describe("Can interact with frame", function() {
     it("can create new Frames", function() {
-      newFrame = game._newFrame(2);
-      expect(game.frameArray).toEqual(newFrame);
+      newFrame = game._newFrame(2)
+      expect(game.frameArray).toEqual([newFrame]);
     });
 
     it("creates frames with roll scorers based on limit", function() {
       game._newFrame(2);
       aNewFrame = game.frameArray.slice(-1)[0];
-      expect(aNewFrame.getRollScores()).toEqual([0, 0]);
+      expect(aNewFrame.getRollScores()).toEqual([]);
     });
 
     it("can count 0 frames at start", function() {
@@ -48,32 +48,33 @@ describe("Game", function() {
         newFrame = game._newFrame(2);
       }
       expect(game.frameArray.length).toEqual(10);
-      expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([0, 0]);
+      expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([]);
     });
 
-    it("stops creating frames at 10 unless bonus status is true [strike]", function() {
+    it("stops creating frames at 10 unless bonus status is true [spare]; create frame with 1 roll", function() {
       for (i = 0; i < 10; i++) {
         newFrame = game._newFrame(2);
       }
-      game.STRIKE = true;
-      expect(game.newFrameRules(2)).toEqual(game.frameArray);
+      game.spare = true;
+      expect(game.newFrameRules(2)).toEqual(game.frameArray.slice(-1)[0]);
       // test above just checks that expected return value of an updated array is created
       expect(game.frameArray.length).toEqual(11);
-      expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([0, 0]);
-      expect(game.frameArray.slice(-1)[0].ROLL_LIMIT).toEqual(2);
-    });
-
-    it("stops creating frames at 10 unless bonus status is true [spare]", function() {
-      for (i = 0; i < 10; i++) {
-        newFrame = game._newFrame(2);
-      }
-      game.STRIKE = false;
-      game.SPARE = true;
-      expect(game.newFrameRules(2)).toEqual(game.frameArray);
-      // test above just checks that expected return value of an updated array is created
-      expect(game.frameArray.length).toEqual(11);
-      expect(game.frameArray.slice(-1)[0].getRollScores()).toEqual([0]);
       expect(game.frameArray.slice(-1)[0].ROLL_LIMIT).toEqual(1);
     });
+
+    it("stops creating frames at 10 unless bonus status is true [strike]; create frame with 2 rolls", function() {
+      for (i = 0; i < 10; i++) {
+        newFrame = game._newFrame(2);
+      }
+      game.spare = false;
+      game.strike = true;
+      expect(game.newFrameRules(2)).toEqual(game.frameArray.slice(-1)[0]);
+      // test above just checks that expected return value of an updated array is created
+      lastFrame = game.frameArray.slice(-1)[0]
+      expect(game.frameArray.length).toEqual(11);
+      expect(lastFrame.getRollScores()).toEqual([]);
+      expect(lastFrame.ROLL_LIMIT).toEqual(2);
+    });
+
   });
 });
