@@ -9,8 +9,8 @@ function Game() {
   this.spare = false;
   this.strike = false;
   this.score = 0;
+  this.lastFrame = this.frameArray.slice(-1)[0];
 }
-
 
 Game.prototype._newFrame = function(number) {
   var frame = new Frame(number);
@@ -20,11 +20,13 @@ Game.prototype._newFrame = function(number) {
 };
 
 Game.prototype.newFrameRules = function(number) {
-  if (this.frameCounter < 10) {
+  if (this.frameCounter == 0) {
+    return this._newFrame(number);
+  } else if (this.frameCounter < 10) {
     this.updateOverallScore();
     return this._newFrame(number);
   } else if (this.frameCounter === 10 && this._bonusStatus() === true) {
-    this.updateOverallScore;
+    this.updateOverallScore();
     return this._newFrame(this._bonusValue(), true);
   } else {
     return "Game Over";
@@ -55,17 +57,17 @@ Game.prototype.bonusPrinter = function() {
   } else return "No bonus!";
 };
 
-Game.prototype.updateOverallScore = function(){
-  if (this.frameArray.length > 0){
-  var lastFrame = this.frameArray.slice(-1)[0]
-  return this.overallScore += lastFrame.frameScore}
+Game.prototype.updateOverallScore = function() {
+    var lastFrame = this.frameArray.slice(-1)[0];
+    return (this.overallScore += lastFrame.frameScore);
 };
-// 
-// Game.prototype.updateOverallScoreRules  = function(){
-//
-//
-// };
 
+// Game.prototype.updateOverallScoreRules  = function(){
+//   var lastFrame = this.frameArray.slice(-1)[0]
+//   if(lastFrame.ROLL_SCORES === [10]){
+//      this.strike = true;
+//   }
+// };
 
 //
 // Game.prototype.bonusScoring = function () {

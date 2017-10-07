@@ -3,6 +3,8 @@ function Frame(number, bonus) {
   this.ROLL_SCORES = [];
   this.bonusFrame = true;
   this.frameScore = 0;
+  this.strike = false;
+  this.spare = false;
 }
 
 Frame.prototype.getRollLimit = function() {
@@ -19,5 +21,14 @@ Frame.prototype.updateFrameScore = function() {
     i < this.ROLL_SCORES.length;
     sum += this.ROLL_SCORES[i++]
   );
-  return (this.frameScore = sum);
+
+  if(sum === 10 && this.ROLL_SCORES.length === 1){
+    this.strike = true;
+    return (this.frameScore = sum)
+  } else if (sum === 10){
+    this.spare = true;
+    return (this.frameScore = sum)
+  } else {
+    return (this.frameScore = sum)
+  }
 };

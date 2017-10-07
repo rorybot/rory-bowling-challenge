@@ -2,6 +2,7 @@ describe("Frame", function() {
   var frame;
 
   beforeEach(function() {
+    game = new Game;
     frame = new Frame(2);
   });
 
@@ -27,5 +28,23 @@ describe("Frame", function() {
       frame.ROLL_SCORES = [5, 3];
       expect(frame.updateFrameScore()).toEqual(8);
     });
+
+    it("returns strike on 10 on first roll", function(){
+      game.newFrameRules(2)
+      first_frame = game.frameArray[0]
+      roller.rollBall(first_frame, 10)
+      console.log(first_frame)
+      expect(first_frame.strike).toEqual(true)
+    });
+
+    it("returns spare on 10 on second roll", function(){
+      game.newFrameRules(2)
+      first_frame = game.frameArray[0]
+      roller.rollBall(first_frame, 7)
+      roller.rollBall(first_frame, 3)
+      console.log(first_frame.frameScore)
+      expect(first_frame.spare).toEqual(true)
+    });
+
   });
 });

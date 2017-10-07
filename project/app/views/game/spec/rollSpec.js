@@ -19,7 +19,7 @@ describe("Roller", function(){
       expect(first_frame.frameScore).toEqual(8)
     });
 
-    it("sets second roll's value 3 after 5")
+    it("sets second roll's value 3 after 5",function(){
     game.newFrameRules(2)
     first_frame = game.frameArray[0]
     expect(roller.rollBall(first_frame, 5)).toEqual([5])

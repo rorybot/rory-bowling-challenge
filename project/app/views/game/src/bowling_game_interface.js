@@ -8,6 +8,7 @@ $(document).ready(function() {
     updateBonusStatus();
     updateRollLimit();
     printOverallScore();
+
   });
 
   function updateFrameNumber(){

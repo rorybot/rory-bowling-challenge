@@ -74,21 +74,13 @@ describe("Game", function() {
 
   describe("Adjust overall game score", function(){
     it("Passes last frame score into overall score", function(){
-      game.newFrameRules()
+      game.newFrameRules(2)
       first_frame = game.frameArray[0]
       roller.rollBall(first_frame,5)
       roller.rollBall(first_frame,3)
       expect(game.updateOverallScore()).toEqual(8)
     });
 
-    it("Update score with new frames", function(){
-      game.newFrameRules(2)
-      first_frame = game.frameArray[0]
-      roller.rollBall(first_frame,5)
-      roller.rollBall(first_frame,3)
-      game.newFrameRules(2)
-      second_frame = game.frameArray[1]
-      expect(game.overallScore).toEqual(8)
-    });
+
   });
 });
