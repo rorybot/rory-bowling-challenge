@@ -50,6 +50,7 @@ Game.prototype.bonusPrinter = function() {
     return "Strike!";
   } else return "No bonus!";
 };
+
 //
 // Game.prototype.bonusScoring = function () {
 //

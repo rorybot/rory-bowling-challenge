@@ -26,12 +26,17 @@ $(document).ready(function() {
 
 
   function updateLatestRollScore(score){
-  $('#latest-frame-score').text(score);
+  $('#latest-frame').text(score);
   updateRollLimit();
+  printFrameScore();
   }
 
   function updateRollLimit(){
   $('#roll-limit').text(bowlingGame.frameArray.slice(-1)[0].ROLL_LIMIT);
+  }
+
+  function printFrameScore(){
+  $('#latest-frame-score').text(bowlingGame.frameArray.slice(-1)[0].frameScore);
   }
 
 });
