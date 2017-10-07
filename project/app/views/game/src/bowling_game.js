@@ -1,6 +1,7 @@
 "use strict";
 
 function Game() {
+  this.overallScore = 0;
   this.frameCounter = 0;
   this.frameArray = [];
   this.spareNumber = 1;
@@ -9,6 +10,7 @@ function Game() {
   this.strike = false;
   this.score = 0;
 }
+
 
 Game.prototype._newFrame = function(number) {
   var frame = new Frame(number);
@@ -19,8 +21,10 @@ Game.prototype._newFrame = function(number) {
 
 Game.prototype.newFrameRules = function(number) {
   if (this.frameCounter < 10) {
+    this.updateOverallScore();
     return this._newFrame(number);
   } else if (this.frameCounter === 10 && this._bonusStatus() === true) {
+    this.updateOverallScore;
     return this._newFrame(this._bonusValue(), true);
   } else {
     return "Game Over";
@@ -50,6 +54,13 @@ Game.prototype.bonusPrinter = function() {
     return "Strike!";
   } else return "No bonus!";
 };
+
+Game.prototype.updateOverallScore = function(){
+  if (this.frameArray.length > 0){
+  var lastFrame = this.frameArray.slice(-1)[0]
+  return this.overallScore = lastFrame.frameScore}
+};
+
 
 //
 // Game.prototype.bonusScoring = function () {
