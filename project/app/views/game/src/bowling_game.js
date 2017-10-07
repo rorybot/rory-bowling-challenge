@@ -26,10 +26,6 @@ Game.prototype.newFrameRules = function(number) {
   }
 };
 
-
-
-
-
 Game.prototype.getFrameCounter = function() {
   return this.frameCounter;
 };
@@ -45,6 +41,15 @@ Game.prototype._bonusValue = function() {
     return this.strikeNumber;
   }
 };
+
+Game.prototype.bonusPrinter = function () {
+  if (this.spare === true) {
+    return "Spare!"
+  } else if (this.strike === true) {
+    return "Strike!"
+  } else
+    return "No bonus!"
+  };
 //
 // Game.prototype.bonusScoring = function () {
 //
