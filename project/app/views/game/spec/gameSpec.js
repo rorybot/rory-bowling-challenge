@@ -3,11 +3,12 @@ describe("Game", function() {
 
   beforeEach(function() {
     game = new Game();
+    roller = new Roller();
   });
 
   describe("Can interact with frame", function() {
     it("can create new Frames", function() {
-      newFrame = game._newFrame(2)
+      newFrame = game._newFrame(2);
       expect(game.frameArray).toEqual([newFrame]);
     });
 
@@ -35,12 +36,11 @@ describe("Game", function() {
       expect(game.frameArray.length).toEqual(5);
     });
 
-
     it("stops creating frames at 10", function() {
       for (i = 0; i < 10; i++) {
         newFrame = game._newFrame(2);
       }
-      expect(game.newFrameRules(2)).toEqual('Game Over');
+      expect(game.newFrameRules(2)).toEqual("Game Over");
       expect(game.frameArray.length).toEqual(10);
     });
 
@@ -59,15 +59,20 @@ describe("Game", function() {
       for (i = 0; i < 10; i++) {
         newFrame = game._newFrame(2);
       }
+
       game.spare = false;
       game.strike = true;
       expect(game.newFrameRules(2)).toEqual(game.frameArray.slice(-1)[0]);
       // test above just checks that expected return value of an updated array is created
-      lastFrame = game.frameArray.slice(-1)[0]
+      lastFrame = game.frameArray.slice(-1)[0];
       expect(game.frameArray.length).toEqual(11);
       expect(lastFrame.getRollScores()).toEqual([]);
       expect(lastFrame.ROLL_LIMIT).toEqual(2);
     });
 
+    it("keeps track of overall score", function() {
+      game.newFrameRules(2);
+      lastFrame = game.frameArray.slice(-1)[0];
+    });
   });
 });

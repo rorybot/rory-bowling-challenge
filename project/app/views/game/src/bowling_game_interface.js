@@ -21,6 +21,7 @@ $(document).ready(function() {
     var currentFrame = bowlingGame.frameArray.slice(-1)[0];
     var frameScore = roller.rollBall(currentFrame, 5);
     updateLatestRollScore(frameScore);
+    // bowlingGame.score +=
   });
 
 

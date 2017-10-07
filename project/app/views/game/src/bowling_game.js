@@ -7,6 +7,7 @@ function Game() {
   this.strikeNumber = 2;
   this.spare = false;
   this.strike = false;
+  this.score = 0;
 }
 
 Game.prototype._newFrame = function(number) {
@@ -18,11 +19,11 @@ Game.prototype._newFrame = function(number) {
 
 Game.prototype.newFrameRules = function(number) {
   if (this.frameCounter < 10) {
-    return this._newFrame(number)
+    return this._newFrame(number);
   } else if (this.frameCounter === 10 && this._bonusStatus() === true) {
     return this._newFrame(this._bonusValue(), true);
   } else {
-    return "Game Over"
+    return "Game Over";
   }
 };
 
@@ -42,14 +43,13 @@ Game.prototype._bonusValue = function() {
   }
 };
 
-Game.prototype.bonusPrinter = function () {
+Game.prototype.bonusPrinter = function() {
   if (this.spare === true) {
-    return "Spare!"
+    return "Spare!";
   } else if (this.strike === true) {
-    return "Strike!"
-  } else
-    return "No bonus!"
-  };
+    return "Strike!";
+  } else return "No bonus!";
+};
 //
 // Game.prototype.bonusScoring = function () {
 //
