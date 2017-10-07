@@ -7,6 +7,7 @@ $(document).ready(function() {
     updateFrameNumber();
     updateBonusStatus();
     updateRollLimit();
+    printOverallScore();
   });
 
   function updateFrameNumber(){
@@ -37,6 +38,10 @@ $(document).ready(function() {
 
   function printFrameScore(){
   $('#latest-frame-score').text(bowlingGame.frameArray.slice(-1)[0].frameScore);
+  }
+
+  function printOverallScore(){
+    $('#overall-score').text(bowlingGame.overallScore);
   }
 
 });

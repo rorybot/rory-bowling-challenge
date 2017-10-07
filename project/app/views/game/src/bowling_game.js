@@ -58,8 +58,13 @@ Game.prototype.bonusPrinter = function() {
 Game.prototype.updateOverallScore = function(){
   if (this.frameArray.length > 0){
   var lastFrame = this.frameArray.slice(-1)[0]
-  return this.overallScore = lastFrame.frameScore}
+  return this.overallScore += lastFrame.frameScore}
 };
+// 
+// Game.prototype.updateOverallScoreRules  = function(){
+//
+//
+// };
 
 
 //
