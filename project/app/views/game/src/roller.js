@@ -6,7 +6,7 @@ Roller.prototype.rollBall = function(frame, rollValue) {
   } else {
     frame.ROLL_SCORES.push(rollValue);
     frame.ROLL_LIMIT -= 1;
-    frame.updateFrameScore();
+    frame.sumFrameScore();
     return frame.ROLL_SCORES;
   }
 };

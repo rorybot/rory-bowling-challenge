@@ -4,6 +4,7 @@ function Game() {
   this.overallScore = 0;
   this.frameCounter = 0;
   this.frameArray = [];
+  this.scoreArray = [];
   this.spareNumber = 1;
   this.strikeNumber = 2;
   this.spare = false;
@@ -62,14 +63,10 @@ Game.prototype.updateOverallScore = function() {
     return (this.overallScore += lastFrame.frameScore);
 };
 
-// Game.prototype.updateOverallScoreRules  = function(){
-//   var lastFrame = this.frameArray.slice(-1)[0]
-//   if(lastFrame.ROLL_SCORES === [10]){
-//      this.strike = true;
-//   }
-// };
 
-//
-// Game.prototype.bonusScoring = function () {
-//
-// };
+Game.prototype.sumUpScores = function(){
+  var text2 = ""
+for (var i = 0; i < this.frameArray.length; i++){
+    text2 += this.frameArray[i]
+  }
+}

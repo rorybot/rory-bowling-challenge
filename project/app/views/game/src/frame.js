@@ -1,10 +1,11 @@
-function Frame(number, bonus) {
+function Frame(number, bonus, rollDebt) {
   this.ROLL_LIMIT = number;
   this.ROLL_SCORES = [];
-  this.bonusFrame = true;
+  this.bonusFrame = bonus;
   this.frameScore = 0;
   this.strike = false;
   this.spare = false;
+  this.rollBonus = 'none';
 }
 
 Frame.prototype.getRollLimit = function() {
@@ -15,20 +16,22 @@ Frame.prototype.getRollScores = function() {
   return this.ROLL_SCORES;
 };
 
-Frame.prototype.updateFrameScore = function() {
+Frame.prototype.sumFrameScore = function() {
   for (
     var i = 0, sum = 0;
     i < this.ROLL_SCORES.length;
     sum += this.ROLL_SCORES[i++]
   );
 
-  if(sum === 10 && this.ROLL_SCORES.length === 1){
-    this.strike = true;
     return (this.frameScore = sum)
-  } else if (sum === 10){
-    this.spare = true;
-    return (this.frameScore = sum)
-  } else {
-    return (this.frameScore = sum)
+
+};
+
+Frame.prototype.isClosedFrame = function () {
+  if(this.rollBonus != 'none' && this.ROLL_SCORES.length < 3){
+    return false
+  }
+  else {
+    return true;
   }
 };

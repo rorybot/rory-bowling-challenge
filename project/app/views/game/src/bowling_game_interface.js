@@ -8,6 +8,7 @@ $(document).ready(function() {
     updateBonusStatus();
     updateRollLimit();
     printOverallScore();
+    printScoreArray();
 
   });
 
@@ -43,6 +44,10 @@ $(document).ready(function() {
 
   function printOverallScore(){
     $('#overall-score').text(bowlingGame.overallScore);
+  }
+
+  function printScoreArray(){
+    $('#score-array').text(bowlingGame.scoreArray)
   }
 
 });

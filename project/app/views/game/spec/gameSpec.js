@@ -81,6 +81,14 @@ describe("Game", function() {
       expect(game.updateOverallScore()).toEqual(8)
     });
 
+    // it("Adds current frame value back to ", function(){
+    //   game.newFrameRules(2)
+    //   first_frame = game.frameArray[0]
+    //   roller.rollBall(first_frame,5)
+    //   roller.rollBall(first_frame,3)
+    //   expect(game.updateOverallScore()).toEqual(8)
+    // });
+
 
   });
 });

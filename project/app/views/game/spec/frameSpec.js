@@ -26,7 +26,7 @@ describe("Frame", function() {
     it("can increment the score value", function() {
       frame = new Frame(2);
       frame.ROLL_SCORES = [5, 3];
-      expect(frame.updateFrameScore()).toEqual(8);
+      expect(frame.sumFrameScore()).toEqual(8);
     });
 
     it("returns strike on 10 on first roll", function(){
@@ -34,7 +34,7 @@ describe("Frame", function() {
       first_frame = game.frameArray[0]
       roller.rollBall(first_frame, 10)
       console.log(first_frame)
-      expect(first_frame.strike).toEqual(true)
+
     });
 
     it("returns spare on 10 on second roll", function(){
@@ -43,8 +43,25 @@ describe("Frame", function() {
       roller.rollBall(first_frame, 7)
       roller.rollBall(first_frame, 3)
       console.log(first_frame.frameScore)
-      expect(first_frame.spare).toEqual(true)
+
     });
+
+    it("checks if bonus is spent when it ain't", function(){
+      frame = new Frame(2);
+      frame.rollBonus = 'strike'
+      frame.ROLL_SCORES = [10,2]
+      console.log(frame)
+      expect(frame.isClosedFrame()).toEqual(false)
+    });
+
+    it("checks if bonus is spent when it IS", function(){
+      frame = new Frame(2);
+      frame.rollBonus = 'strike'
+      frame.ROLL_SCORES = [10,3,3]
+      console.log(frame)
+      expect(frame.isClosedFrame()).toEqual(true)
+    });
+
 
   });
 });

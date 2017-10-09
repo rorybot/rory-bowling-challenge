@@ -5,7 +5,7 @@ Approach:
 - I then went back to the drawing board, now I had a clear idea of what the end point would look like, from a persistent-data POV. I mapped everything out with record cards and physically manipulated them, simulating the key events of the game, in order to figure out how rules would be implemented
 - This took a couple hours, but I was then able to move what I had been acting out into a model on a white board, from which I was then able to start writing tests to create all the necessary steps laid out there
 
-Tech Used:
+- Project is unfinished, so there aren't really any instructions. I wasn't able to figure out a way to track score in between frames, as it required each frame to potentially be able to listen two-frames ahead, in order to grab the bonus value from them. 
 
 Bowling Challenge
 =================
